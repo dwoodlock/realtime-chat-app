@@ -1,16 +1,18 @@
-# 🚀 Real-Time Chat Rooms with Emoji Reactions
+# 🚀 Real-Time Chat Rooms with Active User Sidebar
 
-A modern real-time chat application built with Flask, Socket.IO, and vanilla JavaScript. Features multiple chat rooms, real-time messaging, and emoji reactions.
+A modern real-time chat application built with Flask, Socket.IO, and vanilla JavaScript. Features multiple chat rooms, real-time messaging, emoji reactions, and a live active users sidebar.
 
 ## ✨ Features
 
 - **Real-time messaging** - Messages appear instantly across all connected users
 - **Multiple chat rooms** - General, Random, and Tech rooms available
+- **Active users sidebar** - See who's currently online in your room with real-time updates
 - **Emoji reactions** - React to messages with 👍 ❤️ 😂 😮 😢 😡
 - **Room switching** - Seamlessly switch between rooms without reconnecting
-- **Responsive design** - Works on desktop and mobile devices
+- **Responsive design** - Works on desktop and mobile devices (sidebar hides on mobile)
 - **User notifications** - See when users join/leave rooms
 - **Message history** - View previous messages when joining a room
+- **Session management** - Proper handling of user disconnects and cleanup
 
 ## 🛠️ Technology Stack
 
@@ -22,13 +24,13 @@ A modern real-time chat application built with Flask, Socket.IO, and vanilla Jav
 ## 📁 Project Structure
 
 ```
-chat-app/
-├── app.py                 # Flask + SocketIO server
+realtime-chat-app/
+├── app.py                 # Flask + SocketIO server with user tracking
 ├── requirements.txt       # Python dependencies
 ├── static/
-│   ├── index.html        # Single-page app HTML
+│   ├── index.html        # Single-page app HTML with sidebar
 │   ├── styles.css        # Responsive CSS styling
-│   └── app.js           # Client-side JavaScript
+│   └── app.js           # Client-side JavaScript with user list
 └── README.md            # This file
 ```
 
@@ -41,11 +43,16 @@ chat-app/
 
 ### Installation & Setup
 
-1. **Clone or download this project**
+1. **Clone this repository:**
+   ```bash
+   git clone https://github.com/dwoodlock/realtime-chat-app.git
+   cd realtime-chat-app
+   ```
+
 2. **Create and activate a virtual environment:**
    ```bash
    python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
 3. **Install dependencies:**
@@ -68,17 +75,19 @@ chat-app/
 1. **Join a Room**: Enter your username and select a chat room
 2. **Send Messages**: Type in the input field and press Enter or click Send
 3. **React to Messages**: Click emoji buttons below any message
-4. **Switch Rooms**: Use the dropdown in the header to change rooms
-5. **Leave**: Click the Leave button to return to the join screen
+4. **View Active Users**: Check the sidebar to see who's currently online
+5. **Switch Rooms**: Use the dropdown in the header to change rooms
+6. **Leave**: Click the Leave button to return to the join screen
 
 ## 🎮 Testing the App
 
 1. **Open multiple browser tabs** to `http://localhost:3000`
 2. **Join the same room** with different usernames
-3. **Send messages** and see them appear in real-time
-4. **Test emoji reactions** - click emojis and watch counts update
-5. **Try room switching** and see message history per room
-6. **Test on mobile** - the interface is fully responsive
+3. **Watch the user sidebar** update in real-time as users join/leave
+4. **Send messages** and see them appear instantly
+5. **Test emoji reactions** - click emojis and watch counts update
+6. **Try room switching** and see how user lists are per-room
+7. **Test on mobile** - the sidebar hides automatically for optimal chat space
 
 ## 📡 Socket.IO Events
 
@@ -93,6 +102,7 @@ chat-app/
 - `new_message`: New message broadcast to room
 - `update_reactions`: Real-time reaction count updates
 - `user_joined`/`user_left`: User presence notifications
+- `user_list_update`: Real-time active user list for sidebar
 
 ## 🌐 Production Deployment
 
@@ -147,6 +157,7 @@ All visual customization can be done in `static/styles.css` using CSS custom pro
 - Message deletion/editing
 - Admin moderation tools
 - Push notifications
+- User avatars in sidebar
 
 ## 📄 License
 
