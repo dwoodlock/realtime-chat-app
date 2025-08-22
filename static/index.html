@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Chat Rooms</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+</head>
+<body>
+    <!-- Join Screen -->
+    <div id="join-screen" class="screen">
+        <div class="join-container">
+            <h1>🚀 Real-Time Chat Rooms</h1>
+            <p>Join a chat room and start chatting with emoji reactions!</p>
+            
+            <form id="join-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="room-select">Choose a room:</label>
+                    <select id="room-select" required>
+                        <option value="">Select a room</option>
+                        <option value="General">💬 General</option>
+                        <option value="Random">🎲 Random</option>
+                        <option value="Tech">💻 Tech</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="join-btn">Join Chat Room</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Screen -->
+    <div id="chat-screen" class="screen hidden">
+        <header class="chat-header">
+            <div class="header-info">
+                <h2 id="current-room">Room Name</h2>
+                <span id="current-user">Username</span>
+            </div>
+            <div class="header-actions">
+                <select id="room-switcher">
+                    <option value="General">💬 General</option>
+                    <option value="Random">🎲 Random</option>
+                    <option value="Tech">💻 Tech</option>
+                </select>
+                <button id="leave-btn" class="leave-btn">Leave</button>
+            </div>
+        </header>
+
+        <div class="chat-layout">
+            <!-- User Sidebar -->
+            <aside id="user-sidebar" class="sidebar">
+                <h3>Active Users</h3>
+                <ul id="user-list">
+                    <!-- Users will be dynamically added here -->
+                </ul>
+            </aside>
+
+            <!-- Main Chat Area -->
+            <main class="chat-main">
+                <div id="messages" class="messages-container">
+                    <!-- Messages will be dynamically added here -->
+                </div>
+
+                <form id="message-form" class="message-form">
+                    <input type="text" id="message-input" placeholder="Type your message..." required>
+                    <button type="submit" class="send-btn">Send</button>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <!-- Notification area -->
+    <div id="notifications" class="notifications"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
