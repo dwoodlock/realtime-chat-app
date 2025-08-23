@@ -156,5 +156,8 @@ def handle_disconnect():
         print(f"{username} disconnected from {room}")
 
 if __name__ == '__main__':
-    print("Starting Chat Server on http://localhost:3000")
-    socketio.run(app, host='0.0.0.0', port=3000, debug=True)
+    import os
+    port = int(os.environ.get('PORT', 3000))
+    debug = os.environ.get('FLASK_ENV') != 'production'
+    print(f"Starting Chat Server on port {port}")
+    socketio.run(app, host='0.0.0.0', port=port, debug=debug)
